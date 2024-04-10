@@ -1,4 +1,6 @@
-import type { Preview } from "@storybook/react";
+import type { Preview } from '@storybook/react';
+//solves tailwind storybook issue
+import '../src/index.css';
 
 const preview: Preview = {
   parameters: {
