@@ -31,7 +31,11 @@ export default {
         DEFAULT: '#131316',
       },
     },
-    extend: {},
+    extend: {
+      boxShadow: {
+        main: '0px 6px 12px 0px #5C738314,  0px 4px 8px 0px #5C738314',
+      },
+    },
   },
   plugins: ['@tailwindcss/forms'],
 };
