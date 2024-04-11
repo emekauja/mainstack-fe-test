@@ -1,38 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { Text } from './components/typography/Text/text';
+import 'react-tippy/dist/tippy.css';
+import { MainLayout } from './components/layouts/MainLayout';
+import { useEffect } from 'react';
+import { RevenueChart } from './components/primitive/revenue/chart';
+
+const URL = 'https://fe-task-api.mainstack.io';
 
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = (
+        await Promise.all([
+          fetch(`${URL}/user`),
+          fetch(`${URL}/wallet`),
+          fetch(`${URL}/transactions`),
+        ])
+      ).map((r) => r.json());
 
+      const [user, walletData, transactions] = await Promise.all(result);
+
+      console.log('user ===> ', user);
+      console.log('walletData ===> ', walletData);
+      console.log('transactions ===> ', transactions);
+    };
+
+    fetchData();
+  }, []);
   return (
-    <>
-      <div>
-      <h1 className="text-7xl font-bold underline">
-      Hello world!
-    </h1>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <MainLayout>
+      <RevenueChart startDate={new Date('7/11/24')} />
+
+      <h1 className="text-7xl font-bold underline">Main stack</h1>
+
+      {/* {Outlet} */}
+    </MainLayout>
+  );
 }
 
-export default App
+export default App;
