@@ -34,6 +34,7 @@ export default {
     extend: {
       boxShadow: {
         main: '0px 6px 12px 0px #5C738314,  0px 4px 8px 0px #5C738314',
+        sec: '0px 2px 4px 0px #2D3B430D, 0px 2px 6px 0px #2D3B430F',
       },
     },
   },
