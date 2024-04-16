@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { Text } from '../../typography/Text/text';
 
 interface IEmptyStateProps {
   icon?: ReactElement;
@@ -15,22 +14,8 @@ export const EmptyState = ({ icon, title, subTitle }: IEmptyStateProps) => {
           {React.cloneElement(icon, { color: 'text-gray' })}
         </div>
       ) : null}
-      <Text
-        // className="mb-2"
-        fontSize="text-3xl"
-        fontWeight="font-semibold"
-        textColor="text-black"
-      >
-        {title}
-      </Text>
-      <Text
-        className="mb-6"
-        // fontSize="text-sm"
-        fontWeight="font-normal"
-        textColor="text-gray-300"
-      >
-        {subTitle}
-      </Text>
+      <p className="text-3xl font-semibold text-black"> {title}</p>
+      <p className="mb-6 font-normal text-gray-300 font-degular">{subTitle}</p>
     </div>
   );
 };
