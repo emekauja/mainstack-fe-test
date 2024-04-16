@@ -1,9 +1,8 @@
 import './App.css';
-import { Text } from './components/typography/Text/text';
 import 'react-tippy/dist/tippy.css';
 import { MainLayout } from './components/layouts/MainLayout';
 import { useEffect } from 'react';
-import { RevenueChart } from './components/primitive/revenue/chart';
+import { Outlet } from 'react-router-dom';
 
 const URL = 'https://fe-task-api.mainstack.io';
 
@@ -29,11 +28,7 @@ function App() {
   }, []);
   return (
     <MainLayout>
-      <RevenueChart startDate={new Date('7/11/24')} />
-
-      <h1 className="text-7xl font-bold underline">Main stack</h1>
-
-      {/* {Outlet} */}
+      <Outlet />
     </MainLayout>
   );
 }

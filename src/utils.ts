@@ -16,3 +16,9 @@ export const getNameInitials = ({
     .join('')
     .toUpperCase();
 };
+
+export const transactionTypeOptions = [
+  { label: 'Charge backs', value: 'charge-backs' },
+  { label: 'Withdraw', value: 'withdraw' },
+  { label: 'Deposit', value: 'deposit' },
+];

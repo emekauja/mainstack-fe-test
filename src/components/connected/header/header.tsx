@@ -57,9 +57,9 @@ export const Header = ({ user }: IHeaderProps) => {
   return (
     <div className="sticky top-0 block pt-4 pb-3 px-4 z-50 bg-white">
       <div className="relative flex items-center justify-between shadow-sec rounded-full border-2 border-white h-16 pr-2 pl-6 space-x-3">
-        <a href="">
-          <MainStackLogo />
-        </a>
+        {/* <a href=""> */}
+        <MainStackLogo />
+        {/* </a> */}
 
         <div>
           <Menu />
