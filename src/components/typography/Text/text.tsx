@@ -12,6 +12,7 @@ import {
   TTextTransform,
   TFontWeight,
   TFontStyle,
+  TFontFamily,
 } from 'tailwindcss-classnames';
 import classNamesJoinder from 'classnames';
 import { TWordBreak } from 'tailwindcss-classnames';
@@ -39,6 +40,7 @@ export type ITextProps<T extends ElementType> = {
   wordBreak?: TWordBreak;
   className?: string;
   whiteSpace?: TWhitespace;
+  fontFamily?: TFontFamily;
 };
 
 const truncateClass = classNamesJoinder('truncate');
@@ -57,6 +59,7 @@ function TextComp<T extends ElementType = 'p'>(
     asComp,
     wordBreak,
     whiteSpace,
+    fontFamily,
     ...props
   }: ITextProps<T> & ComponentPropsWithoutRef<T>,
   ref: React.ForwardedRef<ITextProps<T> & ComponentPropsWithoutRef<T>>
@@ -72,6 +75,7 @@ function TextComp<T extends ElementType = 'p'>(
     fontWeight,
     textDecoration,
     fontStyle,
+    fontFamily,
     {
       [truncateClass]: isTruncated,
       [lineClampClass]: !!noOfLines,
