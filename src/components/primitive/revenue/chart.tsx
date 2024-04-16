@@ -54,7 +54,7 @@ const data = [
 export const RevenueChart = ({ startDate, endDate }: IChartProps) => {
   // const formatDate =  new Date("2022/5/19 GMT");
   return (
-    <div className="h-[600px]">
+    <div className="h-[308px]">
       <ResponsiveContainer
         width="100%"
         height="60%"
