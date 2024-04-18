@@ -102,7 +102,10 @@ export const DashboardMenuButton = ({
   active,
   ...props
 }: DashboardMenuButtonProps) => {
-  const aActiveClass = classnames(filledActiveClass, 'hover:bg-black');
+  const aActiveClass = classnames(
+    ...[filledActiveClass].filter((name) => name !== 'hover:bg-current'),
+    'hover:bg-black'
+  );
   const aClass = classnames(
     filled,
     'flex',

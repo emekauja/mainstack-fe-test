@@ -15,7 +15,7 @@ export const Sidebar = ({}: ISidebarProps) => {
       <div className="group relative flex items-center justify-center w-max p-2 max-h-[40px] rounded-full hover:bg-gray-50 cursor-pointer">
         <MainTooltip title={tooltip}>
           <img
-            src={`/src/assets/icons/${icon}.svg`}
+            src={`src/assets/icons/${icon}.svg`}
             alt={tooltip ? tooltip : ''}
             className="w-6 h-6 grayscale group-hover:grayscale-0"
           />

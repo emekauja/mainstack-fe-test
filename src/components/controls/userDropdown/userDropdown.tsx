@@ -125,7 +125,7 @@ export const AppsDropdown = () => {
                 key={tooltip}
                 icon={
                   <img
-                    src={`/src/assets/icons/${icon}.svg`}
+                    src={`src/assets/icons/${icon}.svg`}
                     alt={tooltip ? tooltip : ''}
                     className="w-6 h-6"
                   />
