@@ -110,7 +110,6 @@ export const DashboardMenuButton = ({
   ...props
 }: DashboardMenuButtonProps) => {
   const aClass = classnames(
-    filled,
     'flex',
     'relative',
     'divide-x',
@@ -119,7 +118,8 @@ export const DashboardMenuButton = ({
     'cursor-pointer',
     {
       [aActiveClass]: !!active,
-    }
+    },
+    filled
   );
   return (
     <a className={aClass} {...props}>
