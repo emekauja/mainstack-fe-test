@@ -58,7 +58,15 @@ const aActiveClass = classnames(
     .join(' '),
   'hover:bg-black'
 );
+const aInactiveClass = classnames(
+  [...filled.split(' ')]
+    .filter((name) => {
+      return name !== 'hover:bg-gray-50';
+    })
+    .join(' ')
+);
 const disabledBtn = classnames('opacity-50', 'pointer-events-none');
+
 export const MenuButton = ({
   variant = 'filled',
   icon,
@@ -116,10 +124,12 @@ export const DashboardMenuButton = ({
     'divide-gray-50',
     'rounded-full',
     'cursor-pointer',
+    'focus:hover:bg-blue',
     {
       [aActiveClass]: !!active,
+      'hover:bg-gray-50': !active,
     },
-    filled
+    aInactiveClass
   );
   return (
     <a className={aClass} {...props}>
