@@ -9,6 +9,10 @@ import {
   WidgetsIcon,
   // WidgetsIconActive,
 } from './assets/icons/icons';
+import linkIcon from './assets/icons/link.svg';
+import storeIcon from './assets/icons/store.svg';
+import mediaKitIcon from './assets/icons/media-kit.svg';
+import invoicingIcon from './assets/icons/invoicing.svg';
 
 interface INameInitialsProps {
   name: string | undefined;
@@ -97,17 +101,21 @@ export const sidebarItems = [
   {
     icon: 'link',
     tooltip: 'Link in Bio',
+    imageUrl: linkIcon,
   },
   {
     icon: 'store',
     tooltip: 'Store',
+    imageUrl: storeIcon,
   },
   {
     icon: 'media-kit',
     tooltip: 'Media Kit',
+    imageUrl: mediaKitIcon,
   },
   {
     icon: 'invoicing',
     tooltip: 'Invoicing',
+    imageUrl: invoicingIcon,
   },
 ];

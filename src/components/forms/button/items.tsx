@@ -50,7 +50,14 @@ const filledActiveClass = classnames(
   'hover:bg-current',
   'divide-gray-50'
 );
-
+const aActiveClass = classnames(
+  [...filledActiveClass.split(' ')]
+    .filter((name) => {
+      return name !== 'hover:bg-current';
+    })
+    .join(' '),
+  'hover:bg-black'
+);
 const disabledBtn = classnames('opacity-50', 'pointer-events-none');
 export const MenuButton = ({
   variant = 'filled',
@@ -102,10 +109,6 @@ export const DashboardMenuButton = ({
   active,
   ...props
 }: DashboardMenuButtonProps) => {
-  const aActiveClass = classnames(
-    ...[filledActiveClass].filter((name) => name !== 'hover:bg-current'),
-    'hover:bg-black'
-  );
   const aClass = classnames(
     filled,
     'flex',

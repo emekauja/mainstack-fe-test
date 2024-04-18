@@ -120,12 +120,12 @@ export const AppsDropdown = () => {
       dropdown={
         <DropdownContainer fullHeight>
           <div className=" w-[26.125rem] p-[0.835rem] space-y-3">
-            {sidebarItems.map(({ icon, tooltip }) => (
+            {sidebarItems.map(({ tooltip, imageUrl }) => (
               <MenuItem
                 key={tooltip}
                 icon={
                   <img
-                    src={`src/assets/icons/${icon}.svg`}
+                    src={imageUrl}
                     alt={tooltip ? tooltip : ''}
                     className="w-6 h-6"
                   />
