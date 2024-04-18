@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { TBackgroundColor, TWidth } from 'tailwindcss-classnames';
 import { CancelIcon } from '../../../assets/icons/icons';
 import { clsx as classnames } from 'clsx';
+import { MenuButton } from '../../forms/button/items';
 
 interface IDrawerProps {
   show: boolean;
@@ -39,10 +40,10 @@ const drawerOverlayBase = classnames(
 );
 const contentTop = classnames('top-0');
 const contentLeft = classnames('left-0');
-const contentRight = classnames('right-0', 'm-4');
+const contentRight = classnames('right-0');
 const contentBottom = classnames('bottom-0');
 const spaceAround = classnames('m-4');
-const roundedClass = classnames('rounded-lg');
+const roundedClass = classnames('rounded-[1.25rem]');
 const modalContentBase = classnames(
   'flex',
   'flex-col',
@@ -50,7 +51,7 @@ const modalContentBase = classnames(
   'absolute',
   'max-h-full',
   'max-w-full',
-  'h-full',
+  'h-full-spacing',
   'min-w-sm'
 );
 const insetClass = classnames('inset-y-0', 'shadow', 'z-50');
@@ -115,13 +116,18 @@ export const Drawer = ({
     >
       <div className={modalContentClass} onClick={(e) => e.stopPropagation()}>
         {!!headFragment && (
-          <div className="w-full p-4 flex items-center justify-between ">
+          <div className="w-full p-4 flex items-center justify-between">
             {headFragment}
-            <CancelIcon
-              width={24}
-              height={24}
+            <MenuButton
+              icon={
+                <CancelIcon
+                  width={24}
+                  height={24}
+                  className="text-grey-300 hover:text-black"
+                />
+              }
               onClick={onClose}
-              className="text-grey-300 hover:text-black"
+              variant="icon"
             />
           </div>
         )}
