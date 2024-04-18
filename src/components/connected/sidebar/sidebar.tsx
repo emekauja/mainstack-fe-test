@@ -1,27 +1,7 @@
-import React, { Component, ReactNode } from 'react';
-import { Tooltip, withTooltip } from 'react-tippy';
+import { sidebarItems } from '../../../utils';
 import { MainTooltip } from '../../primitive/tooltip/tooltip';
 
 interface ISidebarProps {}
-
-const sidebarItems = [
-  {
-    icon: 'link',
-    tooltip: 'Link in Bio',
-  },
-  {
-    icon: 'store',
-    tooltip: 'Store',
-  },
-  {
-    icon: 'media-kit',
-    tooltip: 'Media Kit',
-  },
-  {
-    icon: 'invoicing',
-    tooltip: 'Invoicing',
-  },
-];
 
 export const Sidebar = ({}: ISidebarProps) => {
   function SidebarItem({
