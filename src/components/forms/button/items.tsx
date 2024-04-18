@@ -1,6 +1,7 @@
 import { AnchorHTMLAttributes, ReactElement, ReactNode } from 'react';
 import { clsx as classnames } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { ArrowIcon } from '../../../assets/icons/icons';
 
 interface MenuButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   icon?: ReactNode;
@@ -139,7 +140,7 @@ interface MenuItemProps {
 
 export const MenuItem = ({ icon, title, text }: MenuItemProps) => {
   return (
-    <div className="w-full h-[5rem] p-4 rounded-[1rem] hover:shadow-sec border-2 border-white hover:border-gray-100 flex justify-between">
+    <div className="group w-full h-[5rem] p-4 rounded-[1rem] hover:shadow-sec border-2 border-white hover:border-gray-100 flex justify-between items-center text-gray-300">
       <div className="space-x-3 flex items-center">
         {icon && (
           <div className="border border-gray-50 w-12 h-12 flex justify-center items-center rounded-[1rem]">
@@ -147,11 +148,12 @@ export const MenuItem = ({ icon, title, text }: MenuItemProps) => {
           </div>
         )}
         <div className="">
-          <h2 className="font-semibold text-lg ">{title}</h2>
+          <h2 className="font-semibold text-lg text-black">{title}</h2>
           <p className="text-gray-400 text-sm font-medium">{text}</p>
         </div>
       </div>
-      //arrow
+
+      <ArrowIcon className="hidden group-hover:block -rotate-90" />
     </div>
   );
 };
