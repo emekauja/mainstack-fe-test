@@ -110,6 +110,7 @@ export const DashboardMenuButton = ({
     'divide-x',
     'divide-gray-50',
     'rounded-full',
+    'cursor-pointer',
     {
       [aActiveClass]: !!active,
     }
@@ -140,7 +141,7 @@ interface MenuItemProps {
 
 export const MenuItem = ({ icon, title, text }: MenuItemProps) => {
   return (
-    <div className="group w-full h-[5rem] p-4 rounded-[1rem] hover:shadow-sec border-2 border-white hover:border-gray-100 flex justify-between items-center text-gray-300">
+    <div className="group w-full h-[5rem] p-4 rounded-[1rem] hover:shadow-sec border-2 border-white hover:border-gray-100 flex justify-between items-center text-gray-300 cursor-pointer">
       <div className="space-x-3 flex items-center">
         {icon && (
           <div className="border border-gray-50 w-12 h-12 flex justify-center items-center rounded-[1rem]">
