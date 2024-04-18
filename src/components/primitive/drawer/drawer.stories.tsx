@@ -32,7 +32,7 @@ const Template: StoryFn<typeof DrawerBase> = (args) => {
         <div className="w-full">
           {Array(30)
             .fill('*')
-            .map((d, i) => (
+            .map((_, i) => (
               <div key={i}>Modal content {i + 1}</div>
             ))}
         </div>

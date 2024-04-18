@@ -38,7 +38,7 @@ export const Header = ({ user }: IHeaderProps) => {
               : element?.icon;
 
           if (navData[key as RoutesType].toLocaleLowerCase() === 'apps') {
-            return <AppsDropdown />;
+            return <AppsDropdown key={`nav-item-${idx}`} />;
           }
 
           return (

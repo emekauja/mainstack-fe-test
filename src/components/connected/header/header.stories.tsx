@@ -19,6 +19,8 @@ const Template: StoryFn<typeof HeaderBase> = (args) => <HeaderBase {...args} />;
 export const Header = Template.bind({});
 Header.args = {
   user: {
-    name: 'John Doe',
+    first_name: 'John',
+    last_name: 'Doe',
+    email: 'john_doe@gmail.com',
   },
 };
