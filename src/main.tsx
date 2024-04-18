@@ -8,6 +8,10 @@ import {
   createBrowserRouter,
 } from 'react-router-dom';
 import { Revenue } from './routes/revenue/revenue.tsx';
+import {
+  EmptyGeneric,
+  EmptyRevenue,
+} from './components/primitive/emptyState/empty.tsx';
 
 const url = 'https://fe-task-api.mainstack.io';
 
@@ -45,6 +49,23 @@ const router = createBrowserRouter([
         path: 'revenue',
         element: <Revenue />,
         loader: loader,
+        errorElement: <EmptyRevenue />,
+      },
+      {
+        path: 'home',
+        element: <EmptyGeneric routeType="home" />,
+      },
+      {
+        path: 'analytics',
+        element: <EmptyGeneric routeType="analytics" />,
+      },
+      {
+        path: 'crm',
+        element: <EmptyGeneric routeType="CRM" />,
+      },
+      {
+        path: 'apps',
+        element: <EmptyGeneric routeType="apps" />,
       },
     ],
   },
