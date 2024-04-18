@@ -7,13 +7,21 @@ import {
 import cw from 'classnames';
 import { clsx as classnames } from 'clsx';
 //Base
-const baseClass = classnames('rounded-full', 'cursor-pointer');
+const baseClass = classnames('rounded-full', 'text-black', 'cursor-pointer');
 //Filled Schemes
 const filledClass = classnames('bg-black', 'text-white');
-const outlineClass = classnames('border', 'border-gray-50', 'text-black');
+//Outline Schemes
+const outlineClass = classnames('border', 'border-gray-50');
+//Flat Schemes
+const flatClass = classnames('bg-gray-50');
 
 const smallTxt = classnames('text-sm');
-const mediumTxt = classnames('text-base', 'py-2', 'px-6');
+const mediumTxt = classnames(
+  'text-base',
+  'py-3',
+  'pl-[1.875rem]',
+  'pr-[1.25rem]'
+);
 const largeTxt = classnames('text-base', 'py-3.5', 'px-[28px]', 'h-[52px]');
 //Rounded
 const roundedFullBtn = classnames('rounded-full');
@@ -24,7 +32,7 @@ const flexCenter = classnames(
   'justify-center',
   'space-x-2'
 );
-const disabledBtn = classnames('opacity-50', 'cursor-not-allowed');
+const disabledBtn = classnames('opacity-20', 'cursor-not-allowed');
 //full width
 const fullWidth = classnames('w-full');
 export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -60,6 +68,7 @@ export const Button = forwardRef<unknown, IButtonProps>(
     const btnClass = classnames(baseClass, fontWeight, justifyContent, {
       [filledClass]: variant === 'filled',
       [outlineClass]: variant === 'border',
+      [flatClass]: variant === 'flat',
       [smallTxt]: size == 'sm',
       [mediumTxt]: size == 'md',
       [largeTxt]: size == 'lg',
