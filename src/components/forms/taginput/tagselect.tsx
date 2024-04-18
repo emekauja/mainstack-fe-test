@@ -7,6 +7,7 @@ import {
   TagInputOption,
 } from '../../controls/dropdownpopper/options';
 import { DropdownPopper } from '../../controls/dropdownpopper/dropdownpopper';
+import { ArrowIcon } from '../../../assets/icons/icons';
 
 type Option = {
   label: string;
@@ -34,7 +35,7 @@ export const TagSelect = ({
   onTagCancel,
 }: ITagSelectProps) => {
   const [openDropdown, setOpenDropdown] = useState(false);
-  // const toggleDropdown = useCallback(() => setOpenDropdown((v) => !v), []);
+
   const handleOptionSelect = (option: Option) => {
     if (onSelect) onSelect(option);
   };
@@ -62,6 +63,15 @@ export const TagSelect = ({
           onTagCancel={onTagCancel}
           onChange={(val) => onChange(val)}
           renderTag={(tag, onCancel) => renderTag(tag, onCancel)}
+          rightElement={
+            <ArrowIcon
+              width={20}
+              height={20}
+              className={`transform transition-transform duration-500 text-gray-300 ${
+                openDropdown ? 'rotate-180' : 'rotate-0'
+              }`}
+            />
+          }
         />
       }
       dropdown={

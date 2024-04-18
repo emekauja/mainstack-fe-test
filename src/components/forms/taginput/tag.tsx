@@ -18,3 +18,10 @@ export const Tag = ({ tag, onCancel }: ITagProps) => {
     </div>
   );
 };
+export const TextTag = ({ tag }: ITagProps) => {
+  return (
+    <div className="inline-flex items-center ">
+      <span className="text-black text-sm">{tag.label}</span>
+    </div>
+  );
+};
