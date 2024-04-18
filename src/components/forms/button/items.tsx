@@ -101,6 +101,7 @@ export const DashboardMenuButton = ({
   active,
   ...props
 }: DashboardMenuButtonProps) => {
+  const aActiveClass = classnames(filledActiveClass, 'hover:bg-black');
   const aClass = classnames(
     filled,
     'flex',
@@ -109,7 +110,7 @@ export const DashboardMenuButton = ({
     'divide-gray-50',
     'rounded-full',
     {
-      [filledActiveClass]: !!active,
+      [aActiveClass]: !!active,
     }
   );
   return (

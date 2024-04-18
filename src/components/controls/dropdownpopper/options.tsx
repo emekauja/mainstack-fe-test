@@ -1,6 +1,7 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 
 import classNames from 'classnames';
+import { Checkbox } from '../../forms/checkbox/checkbox';
 
 export interface Option {
   value: string;
@@ -11,7 +12,7 @@ export interface IDropdownOptionsProps {
   renderOption: (option: Option, index: number) => ReactNode;
 }
 
-const optClass = classNames('flex', 'flex-col', 'text-left');
+const optClass = classNames('flex', 'flex-col', 'text-left', 'p-2');
 
 export const DropdownOptions = ({
   options,
@@ -29,16 +30,33 @@ export const DropdownOptions = ({
   );
 };
 
+const containerBase = classNames(
+  'flex',
+  'flex-col',
+  'overflow-auto',
+  'rounded-lg',
+  'border',
+  'border-gray-50',
+  'bg-white',
+  'text-left',
+  'shadow-xl'
+);
+const maxHeightClass = classNames('max-h-40');
+const heightFullContent = classNames('h-max');
 // Dropdown Container
 interface DropdownContainerProps extends HTMLAttributes<HTMLDivElement> {
+  fullHeight?: boolean;
   children?: ReactNode;
 }
-export const DropdownContainer = ({ children }: DropdownContainerProps) => {
-  return (
-    <div className="flex max-h-40 flex-col overflow-auto rounded border border-gray-200  bg-white text-left shadow-xl">
-      {children}
-    </div>
-  );
+export const DropdownContainer = ({
+  fullHeight,
+  children,
+}: DropdownContainerProps) => {
+  const mainClass = classNames(containerBase, {
+    [maxHeightClass]: !fullHeight,
+    [heightFullContent]: !!fullHeight,
+  });
+  return <div className={mainClass}>{children}</div>;
 };
 
 interface IOptionProps {
@@ -64,26 +82,31 @@ export const TagInputOption = ({
   onSelect,
   isSelected,
 }: IOptionProps) => {
-  const isSelectedClass = classNames('opacity-20', 'pointer-events-none');
+  // const isSelectedClass = classNames('opacity-20', 'pointer-events-none');
   const optionClass = classNames(
+    'flex',
+    'items-center',
+    'space-x-2',
     'text-sm',
     'text-black',
-    'hover:bg-gray-500',
-    'hover:text-white',
-    'py-1',
+    'hover:bg-gray-50',
+    'rounded-md',
+    // 'hover:text-white',
+    'py-2',
     'px-4',
     'cursor-default',
     {
-      [isSelectedClass]: isSelected,
+      // [isSelectedClass]: isSelected,
     }
   );
   return (
-    <span
+    <div
       key={option.value}
       onClick={() => onSelect(option)}
       className={optionClass}
     >
-      {option.label}
-    </span>
+      <Checkbox checked={isSelected} />
+      <span>{option.label}</span>
+    </div>
   );
 };
