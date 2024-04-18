@@ -2,55 +2,56 @@
 import { MenuButton } from '../../forms/button/items';
 import {
   BellIcon,
-  GroupIcon,
-  HomeIcon,
-  InsertChartIcon,
   MainStackLogo,
-  MenuIcon,
   MessageIcon,
-  PaymentsIcon,
-  WidgetsIcon,
 } from '../../../assets/icons/icons';
-import { Avatar } from '../../primitive/avatar/avatar';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { RoutesType, navData, renderIcon } from '../../../utils';
+import {
+  AppsDropdown,
+  UserDropdown,
+} from '../../controls/userDropdown/userDropdown';
 
-type User = {
-  name: string;
+export type User = {
+  email: string;
+  first_name: string;
+  last_name: string;
 };
 
 interface IHeaderProps {
   user?: User;
 }
 
-const navData = [
-  {
-    icon: <HomeIcon />,
-    text: 'Home',
-  },
-  {
-    icon: <InsertChartIcon />,
-    text: 'Analytics',
-  },
-  {
-    icon: <PaymentsIcon />,
-    text: 'Revenue',
-  },
-  {
-    icon: <GroupIcon />,
-    text: 'CRM',
-  },
-  {
-    icon: <WidgetsIcon />,
-    text: 'Apps',
-  },
-];
-
 export const Header = ({ user }: IHeaderProps) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   function Menu() {
     return (
-      <nav className="flex space-x-1 items-center">
-        {navData.map(({ text, icon }, idx) => (
-          <MenuButton key={`nav-item-${idx}`} text={text} icon={icon} />
-        ))}
+      <nav className="flex space-x-3 items-center">
+        {Object.keys(navData).map((key, idx) => {
+          const element = renderIcon(key as RoutesType);
+          const isActive =
+            location && location.pathname.includes(key.toLowerCase());
+          const icon =
+            isActive && element?.iconActive
+              ? element?.iconActive
+              : element?.icon;
+
+          if (navData[key as RoutesType].toLocaleLowerCase() === 'apps') {
+            return <AppsDropdown />;
+          }
+
+          return (
+            <MenuButton
+              key={`nav-item-${idx}`}
+              text={navData[key as RoutesType]}
+              icon={icon}
+              onClick={() => navigate(`/${key.toLowerCase()}`)}
+              active={isActive}
+            />
+          );
+        })}
       </nav>
     );
   }
@@ -69,10 +70,7 @@ export const Header = ({ user }: IHeaderProps) => {
           <MenuButton icon={<BellIcon />} variant="icon" />
           <MenuButton icon={<MessageIcon />} variant="icon" />
 
-          <div className="rounded-full space-x-2 flex items-center py-1 pr-3 pl-[5px] bg-gray-50">
-            <Avatar name={user?.name} />
-            <MenuIcon />
-          </div>
+          <UserDropdown user={user} />
         </div>
       </div>
     </div>
