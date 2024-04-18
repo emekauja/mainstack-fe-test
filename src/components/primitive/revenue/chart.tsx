@@ -1,4 +1,4 @@
-import { Line, LineChart, ResponsiveContainer } from 'recharts';
+import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
 
 interface IChartProps {
   data?: [];
@@ -22,14 +22,16 @@ export const RevenueChart = ({
         minWidth="100%"
         minHeight={100}
       >
-        <LineChart width={728} height={100} data={data}>
-          <Line
+        <AreaChart width={728} height={100} data={data}>
+          <Area
             type="monotone"
             dataKey={dataKey}
             stroke="#FF5403"
-            activeDot={false}
+            // activeDot={false}
+            fill="none"
           />
-        </LineChart>
+          <Tooltip />
+        </AreaChart>
       </ResponsiveContainer>
 
       <div className="w-full">
